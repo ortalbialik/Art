@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Randomizer</title>
+<script>
+(function(){
+  var parts=location.pathname.split('/').filter(Boolean);
+  if(!parts.length){location.replace('/');return}
+  var repo=parts[0];
+  var rest=parts.slice(1).join('/');
+  if(rest==='index.html')rest='';
+  var map={art:'art-home',books:'art-books',history:'art-history','add-log':'art-add-log','art/books':'art-books','art/history':'art-history','art/add-log':'art-add-log'};
+  var screen=rest&&(map[rest]||rest.replace(/\//g,'-'))||'art-home';
+  var base='/'+repo+'/';
+  location.replace(screen==='art-home'?base:base+'#'+screen);
+})();
+</script>
+</head>
+<body><p style="font-family:system-ui;padding:24px">Redirecting…</p></body>
+</html>
